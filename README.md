@@ -1,2 +1,2 @@
 # devops4-uusi
-Loman jalkeen
+Loman jalkeen jatketaan hommia
