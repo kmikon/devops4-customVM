@@ -12,32 +12,11 @@ resource "cloudflare_zone_settings_override" "default" {
     }
 }
 
-resource "cloudflare_record" "www" {
+resource "cloudflare_record" "docker" {
   domain  = "${var.cloudflare_domain}"
-  name    = "www"
+  name    = "docker"
   value   = "${google_compute_address.default.address}"
   type    = "A"
   ttl     = 1
   proxied = true
-}
-
-resource "cloudflare_record" "domain" {
-  domain  = "${var.cloudflare_domain}"
-  name    = "@"
-  value   = "${google_compute_address.default.address}"
-  type    = "A"
-  ttl     = 1
-  proxied = true
-}
-
-resource "cloudflare_page_rule" "force_www" {
-  zone = "${var.cloudflare_domain}"
-  target = "https://${var.cloudflare_domain}/*"
-  priority = 1
-  actions = {
-    forwarding_url {
-      url = "https://www.${var.cloudflare_domain}/$1"
-      status_code = "301",
-    }
-  }
 }

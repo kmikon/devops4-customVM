@@ -4,7 +4,7 @@ variable "region" {
   default = "europe-north1"
 }
 variable "machine_type" {
-  default = "n1-standard-1"
+  default = "g1-small"
 }
 variable "network_cidr" {
   default = "10.11.12.0/24"
